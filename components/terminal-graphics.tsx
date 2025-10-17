@@ -192,7 +192,7 @@ const graphicsShowcase = [
     image: "/portfolio/Donate-Bright-Sparks.png",
     description:
       "This project is a school donation platform where users can donate to support children. It was built using the Hello Elementor theme, Contact Form 7 for form handling, and Razorpay for secure payment collection. After each donation, confirmation emails are automatically sent to both the admin and the donor.",
-    url: "https://p2-p-admin.vercel.app/",
+    url: "https://brightsparksschool.org/",
   },
 ]
 
