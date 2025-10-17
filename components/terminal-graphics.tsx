@@ -185,6 +185,15 @@ const graphicsShowcase = [
       "This blockchain project integrates MetaMask login via RainbowKit for secure access. Users can view transactions and track referrals through a dynamic referral tree. It provides a transparent and interactive platform for managing blockchain activities.",
     url: "https://p2-p-admin.vercel.app/",
   },
+    {
+    id: 23,
+    title: "Donate Bright Sparks",
+    category: "Wordpress",
+    image: "/portfolio/Donate-Bright-Sparks.png",
+    description:
+      "This project is a school donation platform where users can donate to support children. It was built using the Hello Elementor theme, Contact Form 7 for form handling, and Razorpay for secure payment collection. After each donation, confirmation emails are automatically sent to both the admin and the donor.",
+    url: "https://p2-p-admin.vercel.app/",
+  },
 ]
 
 export function TerminalGraphics() {

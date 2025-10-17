@@ -119,7 +119,7 @@ export default function RootLayout({
         className={`${montserrat.variable} ${openSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}
         style={{ fontFeatureSettings: '"cv02", "cv03", "cv04", "cv11"' }}
       >
-        <TerminalPreloader />
+        <TerminalPreloader defaultTheme="light" />
         {children}
 
         <script

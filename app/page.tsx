@@ -149,7 +149,7 @@ export default function Portfolio() {
     
   }
   return (
-    <ThemeProvider>
+    <ThemeProvider attribute="class" defaultTheme="light">
       <TerminalPreloader />
       <div className="min-h-screen bg-background text-foreground">
         <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-orange-900/20 to-blue-900/20 -z-10 parallax-bg"></div>
