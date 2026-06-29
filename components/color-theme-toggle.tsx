@@ -19,12 +19,10 @@ export function ColorThemeToggle() {
   const applyColorTheme = (theme: string) => {
     const root = document.documentElement
 
-    // Remove existing theme classes
     colorThemes.forEach((t) => {
       root.classList.remove(`theme-${t.value}`)
     })
 
-    // Add new theme class
     root.classList.add(`theme-${theme}`)
 
     const selectedTheme = colorThemes.find((t) => t.value === theme)
@@ -34,7 +32,6 @@ export function ColorThemeToggle() {
 
     setCurrentTheme(theme)
 
-    // Store preference in localStorage
     localStorage.setItem("color-theme", theme)
 
     root.style.transition = "all 0.3s ease"
