@@ -36,7 +36,6 @@ export default function AdventureCursor() {
     const handleMouseEnter = () => setIsHovering(true)
     const handleMouseLeave = () => setIsHovering(false)
 
-    // Add event listeners to interactive elements
     const interactiveElements = document.querySelectorAll("button, a, .hover-3d, .magnetic-hover")
 
     interactiveElements.forEach((el) => {
@@ -57,7 +56,6 @@ export default function AdventureCursor() {
 
   return (
     <>
-      {/* Main cursor */}
       <div
         className={`adventure-cursor fixed pointer-events-none z-50 mix-blend-difference transition-all duration-300 ${
           isHovering ? "scale-150" : "scale-100"
@@ -76,7 +74,6 @@ export default function AdventureCursor() {
         </div>
       </div>
 
-      {/* Cursor trail */}
       <div
         className="cursor-trail fixed pointer-events-none z-40 mix-blend-difference"
         style={{
