@@ -10,13 +10,12 @@ export default function Hero3DScene() {
     const scene = sceneRef.current
     if (!scene) return
 
-    // Create 3D perspective container
     gsap.set(scene, {
       perspective: 1000,
       transformStyle: "preserve-3d",
     })
 
-    // Animate 3D layers
+    
     const layers = scene.querySelectorAll(".layer-3d")
 
     layers.forEach((layer, index) => {
@@ -25,7 +24,6 @@ export default function Hero3DScene() {
         z: index * -100,
       })
 
-      // Parallax effect on mouse move
       const handleMouseMove = (e: MouseEvent) => {
         const { clientX, clientY } = e
         const { innerWidth, innerHeight } = window
@@ -48,7 +46,6 @@ export default function Hero3DScene() {
       }
     })
 
-    // Floating animation for 3D elements
     gsap.to(".floating-3d", {
       y: "+=20",
       rotationZ: "+=5",
