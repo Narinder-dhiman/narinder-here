@@ -149,7 +149,6 @@ export default function Portfolio() {
       <div className="min-h-screen bg-background text-foreground">
         <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-orange-900/20 to-blue-900/20 -z-10 parallax-bg"></div>
 
-        {/* Navigation */}
         <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-orange-500/20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex justify-between items-center">
@@ -218,7 +217,6 @@ export default function Portfolio() {
         <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-24 pb-12 lg:pt-32 lg:pb-24">
           <div className="w-full px-4 sm:px-8 lg:px-12">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              {/* Hero Content */}
               <div className="hero-content space-y-8">
                 <div className="space-y-6">
                   <Badge variant="outline" className="text-sm px-4 py-2 border-primary/50 text-primary">
@@ -258,17 +256,16 @@ export default function Portfolio() {
                   </p>
                 </div>
 
-                {/* Stats */}
                 <div className="grid grid-cols-3 gap-6 py-6">
-                  <div className="text-center">
+                  <div className="text-left">
                     <div className="text-2xl sm:text-3xl font-bold text-primary"><span className="stat-number">3</span>+</div>
                     <div className="text-sm text-muted-foreground">Years Experience</div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-left">
                     <div className="text-2xl sm:text-3xl font-bold text-primary"><span className="stat-number">32</span>+</div>
                     <div className="text-sm text-muted-foreground">Projects Done</div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-left">
                     <div className="text-2xl sm:text-3xl font-bold text-primary"><span className="stat-number">25</span>+</div>
                     <div className="text-sm text-muted-foreground">Happy Clients</div>
                   </div>
