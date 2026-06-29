@@ -27,6 +27,7 @@ import {
   Globe,
   Database,
   Zap,
+  Calendar,
 } from "lucide-react"
 
 if (typeof window !== "undefined") {
@@ -66,25 +67,19 @@ export default function Portfolio() {
         gsap.fromTo(
           section,
           {
-            rotateX: -90,
+            y: 50,
             opacity: 0,
-            scale: 0.8,
-            transformOrigin: "top center",
           },
           {
             scrollTrigger: {
               trigger: section,
-              start: "top 80%",
-              end: "bottom 20%",
+              start: "top 85%",
               toggleActions: "play none none reverse",
-              scrub: 1,
             },
-            rotateX: 0,
+            y: 0,
             opacity: 1,
-            scale: 1,
-            duration: 1.5,
+            duration: 1,
             ease: "power2.out",
-            delay: index * 0.1,
           },
         )
       })
@@ -146,7 +141,7 @@ export default function Portfolio() {
     link.click();
     document.body.removeChild(link);
 
-    
+
   }
   return (
     <ThemeProvider attribute="class" defaultTheme="light">
@@ -167,9 +162,9 @@ export default function Portfolio() {
                   className="rounded-lg"
                 />
                 <span
-                  className="text-xl font-bold text-orange-500"
+                  className="text-xl font-bold text-primary"
                   style={{
-                    background: "linear-gradient(135deg, #f97316, #3b82f6)",
+                    background: "linear-gradient(135deg, var(--primary), var(--secondary))",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -205,12 +200,6 @@ export default function Portfolio() {
                   Projects
                 </button>
                 <button
-                  onClick={() => scrollToSection(skillsRef)}
-                  className="text-sm font-medium hover:text-orange-500 transition-colors duration-200"
-                >
-                  Skills
-                </button>
-                <button
                   onClick={() => scrollToSection(contactRef)}
                   className="text-sm font-medium hover:text-orange-500 transition-colors duration-200"
                 >
@@ -226,23 +215,22 @@ export default function Portfolio() {
           </div>
         </nav>
 
-        {/* Hero Section */}
-        <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-20 pb-10">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-24 pb-12 lg:pt-32 lg:pb-24">
+          <div className="w-full px-4 sm:px-8 lg:px-12">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* Hero Content */}
               <div className="hero-content space-y-8">
                 <div className="space-y-6">
-                  <Badge variant="outline" className="text-sm px-4 py-2 border-orange-500/50 text-orange-500">
+                  <Badge variant="outline" className="text-sm px-4 py-2 border-primary/50 text-primary">
                     <Code className="w-4 h-4 mr-2" />
-                    Frontend Developer
+                    Frontend Engineer | React.js | Next.js | UI/UX Designer
                   </Badge>
 
                   <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
                     <span
-                      className="text-white"
+                      className="text-foreground"
                       style={{
-                        background: "linear-gradient(135deg, #ffffff, #d1d5db)",
+                        background: "linear-gradient(135deg, var(--foreground), var(--muted-foreground))",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
                         backgroundClip: "text",
@@ -250,11 +238,12 @@ export default function Portfolio() {
                     >
                       Narinder
                     </span>
-                    <br />
+
                     <span
-                      className="text-orange-500"
+                      className="text-primary"
                       style={{
-                        background: "linear-gradient(135deg, #f97316, #3b82f6)",
+                        paddingLeft: "15px",
+                        background: "linear-gradient(135deg, var(--primary), var(--secondary))",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
                         backgroundClip: "text",
@@ -265,38 +254,36 @@ export default function Portfolio() {
                   </h1>
 
                   <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-                    Skilled graphic and web designer with expertise in React.js frontend development, dedicated to
-                    creating visually captivating designs and dynamic web experiences. Successfully collaborated on
-                    various design projects, ensuring seamless integration of aesthetics and functionality.
+                    Creative developer with 3+ years of experience delivering visually engaging, high-performance web applications that combine exceptional user experience with clean, scalable code. Experienced in turning design concepts into production-ready digital products while emphasizing performance, accessibility, and maintainability.
                   </p>
                 </div>
 
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-6 py-6">
                   <div className="text-center">
-                    <div className="text-2xl sm:text-3xl font-bold text-orange-500 stat-number">3+</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-primary"><span className="stat-number">3</span>+</div>
                     <div className="text-sm text-muted-foreground">Years Experience</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl sm:text-3xl font-bold text-blue-500 stat-number">20+</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-primary"><span className="stat-number">32</span>+</div>
                     <div className="text-sm text-muted-foreground">Projects Done</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl sm:text-3xl font-bold text-purple-500 stat-number">16+</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-primary"><span className="stat-number">25</span>+</div>
                     <div className="text-sm text-muted-foreground">Happy Clients</div>
                   </div>
                 </div>
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button onClick={downloadCv} size="lg" className="bg-orange-500 cursor-pointer hover:bg-orange-600 text-white">
+                  <Button onClick={downloadCv} size="lg" className="bg-primary cursor-pointer hover:bg-primary/90 text-primary-foreground">
                     <Download className="w-5 h-5 mr-2" />
                     Download CV
                   </Button>
                   <Button
                     variant="outline"
                     size="lg"
-                    className="border-orange-500/50 hover:bg-orange-500/10 bg-transparent text-orange-500"
+                    className="border-primary/50 hover:bg-primary/10 bg-transparent text-primary"
                     onClick={() => setIsContactModalOpen(true)}
                   >
                     <Mail className="w-5 h-5 mr-2" />
@@ -309,26 +296,26 @@ export default function Portfolio() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="hover:bg-primary/10 hover:text-primary"
+                    className="hover:bg-primary/10 hover:text-primary h-12 w-12"
                     onClick={() => window.open("https://github.com/Narinder-dhiman", "_blank")}
                   >
-                    <Github className="w-5 h-5" />
+                    <Github className="w-7 h-7" />
                   </Button>
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="hover:bg-primary/10 hover:text-primary"
+                    className="hover:bg-primary/10 hover:text-primary h-12 w-12"
                     onClick={() => window.open("https://www.linkedin.com/in/narinder-dhiman/", "_blank")}
                   >
-                    <Linkedin className="w-5 h-5" />
+                    <Linkedin className="w-7 h-7" />
                   </Button>
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="hover:bg-primary/10 hover:text-primary"
+                    className="hover:bg-primary/10 hover:text-primary h-12 w-12"
                     onClick={() => window.open("mailto:dhimannarinder746@gmail.com", "_blank")}
                   >
-                    <Mail className="w-5 h-5" />
+                    <Mail className="w-7 h-7" />
                   </Button>
                 </div>
               </div>
@@ -364,220 +351,255 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* About Section */}
-        <section ref={aboutRef} className="py-20 animate-section">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
+        {/* About & Skills Bento Box */}
+        <section ref={aboutRef} className="pb-20 lg:py-24 animate-section">
+          <div className="w-full px-4 sm:px-8 lg:px-12">
+            <div className="w-full">
               <div className="text-center mb-16">
-                <h2
-                  className="text-3xl sm:text-4xl font-bold mb-6 text-orange-500"
-                  style={{
-                    background: "linear-gradient(135deg, #f97316, #3b82f6)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  About Me
+                <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-foreground">
+                  <span className="text-primary">About & </span>Expertise
                 </h2>
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                  I am a skilled graphic and web designer, as well as a proficient React.js frontend developer. I
-                  specialize in crafting visually captivating designs and building dynamic, user-friendly web
-                  experiences.
+                  A dynamic mix of creative design and robust frontend development.
                 </p>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold">My Journey</h3>
-                  <div className="space-y-4 text-muted-foreground leading-relaxed">
-                    <p>
-                      Proficient in Adobe Creative Suite, JavaScript, and CSS, committed to continuous growth and
-                      enhancing design and development skills. My creative flair and strategic thinking enable me to
-                      collaborate seamlessly with teams on design projects.
-                    </p>
-                    <p>
-                      My expertise in React.js allows me to translate designs into interactive and responsive web
-                      applications. Ready to contribute innovative solutions and bring ideas to life through code and
-                      design.
-                    </p>
-                  </div>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Large Bio Card */}
+                <Card className="md:col-span-2 lg:col-span-2 lg:row-span-2 hover:shadow-lg transition-shadow duration-300 border-primary/20 bg-gradient-to-br from-background to-primary/5">
+                  <CardContent className="p-8 h-full flex flex-col justify-center">
+                    <h3 className="text-2xl font-bold mb-4">My Journey</h3>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        I am a creative developer with 3+ years of experience delivering visually engaging, high-performance web applications that combine exceptional user experience with clean, scalable code.
+                      </p>
+                      <p>
+                        Passionate about solving complex problems and building products that create real business value. Proficient in Next.js, React.js, and modern UI/UX design tools like Figma and Adobe XD.
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <Card className="hover:shadow-lg transition-shadow duration-300">
-                    <CardContent className="p-6 text-center">
-                      <Palette className="w-8 h-8 text-primary mx-auto mb-4" />
-                      <h4 className="font-semibold mb-2">Design</h4>
-                      <p className="text-sm text-muted-foreground">UI/UX Design, Figma, Adobe XD</p>
-                    </CardContent>
-                  </Card>
-                  <Card className="hover:shadow-lg transition-shadow duration-300">
-                    <CardContent className="p-6 text-center">
-                      <Code className="w-8 h-8 text-secondary mx-auto mb-4" />
-                      <h4 className="font-semibold mb-2">Frontend</h4>
-                      <p className="text-sm text-muted-foreground">React.js, Next.js, TypeScript</p>
-                    </CardContent>
-                  </Card>
-                  <Card className="hover:shadow-lg transition-shadow duration-300">
-                    <CardContent className="p-6 text-center">
-                      <Smartphone className="w-8 h-8 text-accent mx-auto mb-4" />
-                      <h4 className="font-semibold mb-2">Mobile</h4>
-                      <p className="text-sm text-muted-foreground">Responsive Design, PWA</p>
-                    </CardContent>
-                  </Card>
-                  <Card className="hover:shadow-lg transition-shadow duration-300">
-                    <CardContent className="p-6 text-center">
-                      <Database className="w-8 h-8 text-primary mx-auto mb-4" />
-                      <h4 className="font-semibold mb-2">Backend</h4>
-                      <p className="text-sm text-muted-foreground">Node.js, Supabase, APIs</p>
-                    </CardContent>
-                  </Card>
-                </div>
+                {/* Frontend Skills */}
+                <Card className="hover:shadow-lg transition-shadow duration-300 bg-background/50 backdrop-blur md:col-span-1 lg:col-span-1">
+                  <CardContent className="p-6">
+                    <Code className="w-8 h-8 text-primary mb-4" />
+                    <h4 className="font-semibold mb-2">Frontend Development</h4>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      <Badge variant="secondary">React.js</Badge>
+                      <Badge variant="secondary">Next.js</Badge>
+                      <Badge variant="secondary">TypeScript</Badge>
+                      <Badge variant="secondary">JavaScript (ES6+)</Badge>
+                      <Badge variant="secondary">Redux</Badge>
+                      <Badge variant="secondary">Three.js</Badge>
+                      <Badge variant="secondary">GSAP</Badge>
+                      <Badge variant="secondary">HTML5 / CSS3</Badge>
+                      <Badge variant="secondary">Bootstrap</Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Design Skills */}
+                <Card className="hover:shadow-lg transition-shadow duration-300 bg-background/50 backdrop-blur md:col-span-1 lg:col-span-1">
+                  <CardContent className="p-6">
+                    <Palette className="w-8 h-8 text-secondary mb-4" />
+                    <h4 className="font-semibold mb-2">UI/UX Design</h4>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      <Badge variant="secondary">Figma</Badge>
+                      <Badge variant="secondary">Adobe XD</Badge>
+                      <Badge variant="secondary">Photoshop</Badge>
+                      <Badge variant="secondary">Illustrator</Badge>
+                      <Badge variant="secondary">Responsive Design</Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Backend / Tech Skills */}
+                <Card className="hover:shadow-lg transition-shadow duration-300 bg-background/50 backdrop-blur md:col-span-2 lg:col-span-1">
+                  <CardContent className="p-6">
+                    <Database className="w-8 h-8 text-accent mb-4" />
+                    <h4 className="font-semibold mb-2">Backend & Tech</h4>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      <Badge variant="secondary">Node.js</Badge>
+                      <Badge variant="secondary">Express.js</Badge>
+                      <Badge variant="secondary">MongoDB</Badge>
+                      <Badge variant="secondary">MySQL</Badge>
+                      <Badge variant="secondary">Supabase</Badge>
+                      <Badge variant="secondary">REST APIs / GraphQL</Badge>
+                      <Badge variant="secondary">Shopify</Badge>
+                      <Badge variant="secondary">WordPress</Badge>
+                      <Badge variant="secondary">Git / GitHub</Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Education */}
+                <Card className="hover:shadow-lg transition-shadow duration-300 bg-background/50 backdrop-blur md:col-span-2 lg:col-span-2">
+                  <CardContent className="p-6 flex flex-col md:flex-row items-start md:items-center justify-between">
+                    <div>
+                      <Globe className="w-8 h-8 text-primary mb-4" />
+                      <h4 className="font-semibold mb-2">Education</h4>
+                      <div className="space-y-1 text-sm text-muted-foreground">
+                        <p>• 10th Class - 2018 (HP Board)</p>
+                        <p>• 12th Class - 2020 (HP Board)</p>
+                        <p>• Web Designing - 2022 (Institute)</p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-end gap-2 mt-4 md:mt-0 max-w-xs text-right">
+                      <h4 className="font-semibold">Interests</h4>
+                      <p className="text-sm text-muted-foreground">Listening to Music, Playing Cricket, Learning New Things</p>
+                      <div className="flex gap-2 mt-2 justify-end">
+                        <Badge variant="outline" className="border-primary/30">English</Badge>
+                        <Badge variant="outline" className="border-primary/30">Hindi</Badge>
+                        <Badge variant="outline" className="border-primary/30">Punjabi</Badge>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
         </section>
 
         {/* Experience Section */}
-        <section ref={experienceRef} className="py-20 animate-section">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
+        <section ref={experienceRef} className="py-20 lg:py-24 animate-section">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="w-full">
               <div className="text-center mb-16">
-                <h2
-                  className="text-3xl sm:text-4xl font-bold mb-6 text-orange-500"
-                  style={{
-                    background: "linear-gradient(135deg, #f97316, #3b82f6)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  Work Experience
+                <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-foreground">
+                  <span className="text-primary">Work </span>Experience
                 </h2>
                 <p className="text-lg sm:text-xl text-muted-foreground">
                   My professional journey in web development and design
                 </p>
               </div>
 
-              <div className="space-y-8">
-                <Card className="hover:shadow-lg transition-shadow duration-300 animate-section">
-                  <CardContent className="p-6 sm:p-8">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-primary">Frontend Developer</h3>
-                        <p className="text-lg text-muted-foreground">Block Coders Company</p>
+              <div className="relative border-l-2 border-primary/30 ml-3 space-y-12 pb-8">
+                {/* Company 1: Block Coders */}
+                <div className="relative pl-8 group">
+                  <div className="absolute left-[-9px] top-2 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg transition-transform duration-300 group-hover:scale-125"></div>
+                  <Card className="hover:shadow-xl transition-all duration-300 border-primary/20 bg-background/50 backdrop-blur">
+                    <CardContent className="p-6 sm:p-8">
+                      <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8 border-b border-border/50 pb-6">
+                        <div>
+                          <h3 className="text-2xl font-bold text-primary mb-3">Block Coders</h3>
+                          <div className="flex flex-wrap items-center gap-4 text-sm font-medium text-muted-foreground">
+                            <div className="flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full">
+                              <Calendar className="w-4 h-4" />
+                              17 Jan 2022 to 13 Jan 2025
+                            </div>
+                            <div className="flex items-center gap-2 bg-secondary/20 text-muted-foreground px-3 py-1 rounded-full">
+                              <MapPin className="w-4 h-4 text-red-500" />
+                              Sector 74, Sahibzada Ajit Singh Nagar
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <Badge variant="secondary" className="mt-2 sm:mt-0 w-fit">
-                        17 Jan 2022 - 13 Jan 2025
-                      </Badge>
-                    </div>
-                    <ul className="space-y-3 text-muted-foreground">
-                      <li className="flex items-start">
-                        <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        Engineered dynamic web applications with JavaScript, Next.js, and React.js
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        Implemented core functionalities, including advanced search, API integration, and user
-                        authentication, to enhance application performance and user experience
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        Designed responsive, visually engaging UI/UX using HTML5, CSS3, and Bootstrap
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
 
-                <Card className="hover:shadow-lg transition-shadow duration-300 animate-section">
-                  <CardContent className="p-6 sm:p-8">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-secondary">Frontend Developer</h3>
-                        <p className="text-lg text-muted-foreground">Cybersify Cloud Computing Pvt Ltd</p>
+                      <div className="space-y-8">
+                        {/* Role 1 */}
+                        <div className="relative pl-4 border-l-2 border-primary/20 hover:border-primary transition-colors">
+                          <h4 className="text-lg font-bold text-foreground mb-2">Six-Month Internship in Web Design :</h4>
+                          <ul className="text-sm text-muted-foreground leading-relaxed space-y-2 list-disc ml-4">
+                            <li>Developed responsive UI/UX using HTML5, CSS3, and Bootstrap.</li>
+                            <li>Created wireframes and prototypes with Adobe XD, Figma, and Photoshop, enhancing design-to-development workflow.</li>
+                          </ul>
+                        </div>
+                        {/* Role 2 */}
+                        <div className="relative pl-4 border-l-2 border-primary/20 hover:border-primary transition-colors">
+                          <h4 className="text-lg font-bold text-foreground mb-2">Six-Month Web Designer :</h4>
+                          <ul className="text-sm text-muted-foreground leading-relaxed space-y-2 list-disc ml-4">
+                            <li>Created mobile-friendly, SEO-optimized websites with JavaScript enhancements and CSS animations.</li>
+                            <li>Designed a responsive, visually engaging UI/UX using HTML5, CSS3, and Bootstrap.</li>
+                          </ul>
+                        </div>
+                        {/* Role 3 */}
+                        <div className="relative pl-4 border-l-2 border-primary/20 hover:border-primary transition-colors">
+                          <h4 className="text-lg font-bold text-foreground mb-2">Frontend Developer (Block Coders Company, 2+ Years) :</h4>
+                          <p className="text-sm text-muted-foreground leading-relaxed ml-4">
+                            Engineered dynamic web applications with JavaScript, Next.js, and React.js. Implemented core functionalities, including advanced search, API integration, and user authentication, to enhance application performance and user experience.
+                          </p>
+                        </div>
                       </div>
-                      <Badge variant="outline" className="mt-2 sm:mt-0 w-fit">
-                        11 Mar 2024 - 11 Sep 2024
-                      </Badge>
-                    </div>
-                    <ul className="space-y-3 text-muted-foreground">
-                      <li className="flex items-start">
-                        <div className="w-2 h-2 bg-secondary rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        Contributed to Shopify projects, utilizing React and Figma for UI/UX design
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-2 h-2 bg-secondary rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        Implemented smooth and engaging animations with GSAP to improve user interaction
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </div>
 
-                {/* Web Designer Experience */}
-                <Card className="hover:shadow-lg transition-shadow duration-300 animate-section">
-                  <CardContent className="p-6 sm:p-8">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-secondary">Web Designer</h3>
-                        <p className="text-lg text-muted-foreground">Six-Month Position</p>
+                {/* Company 2: Cybersify */}
+                <div className="relative pl-8 group">
+                  <div className="absolute left-[-9px] top-2 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg transition-transform duration-300 group-hover:scale-125"></div>
+                  <Card className="hover:shadow-xl transition-all duration-300 border-primary/20 bg-background/50 backdrop-blur">
+                    <CardContent className="p-6 sm:p-8">
+                      <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8 border-b border-border/50 pb-6">
+                        <div>
+                          <h3 className="text-2xl font-bold text-primary mb-3">Cybersify Cloud computing Pvt Ltd</h3>
+                          <div className="flex flex-wrap items-center gap-4 text-sm font-medium text-muted-foreground">
+                            <div className="flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full">
+                              <Calendar className="w-4 h-4" />
+                              21 Feb 2024 to 30 Sep 2024
+                            </div>
+                            <div className="flex items-center gap-2 bg-secondary/20 text-muted-foreground px-3 py-1 rounded-full">
+                              <MapPin className="w-4 h-4 text-red-500" />
+                              Sector 74, Sahibzada Ajit Singh Nagar
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <Badge variant="outline">6 Months</Badge>
-                    </div>
-                    <ul className="space-y-3 text-muted-foreground">
-                      <li className="flex items-start">
-                        <div className="w-2 h-2 bg-secondary rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        Created mobile-friendly, SEO-optimized websites with JavaScript enhancements and CSS animations
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-2 h-2 bg-secondary rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        Designed responsive, visually engaging UI/UX using HTML5, CSS3, and Bootstrap
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
 
-                {/* Web Design Internship */}
-                <Card className="hover:shadow-lg transition-shadow duration-300 animate-section">
-                  <CardContent className="p-6 sm:p-8">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-accent">Web Design Intern</h3>
-                        <p className="text-lg text-muted-foreground">Six-Month Internship</p>
+                      <div className="space-y-8">
+                        <div className="relative pl-4 border-l-2 border-primary/20 hover:border-primary transition-colors">
+                          <h4 className="text-lg font-bold text-foreground mb-2">Frontend Developer (Cybersify Cloud computing Pvt Ltd, 6+ Months) :</h4>
+                          <p className="text-sm text-muted-foreground leading-relaxed ml-4">
+                            Contributed to Shopify projects, utilizing React and Figma for UI/UX design. Implemented smooth and engaging animations with GSAP to improve user interaction.
+                          </p>
+                        </div>
                       </div>
-                      <Badge variant="outline">6 Months</Badge>
-                    </div>
-                    <ul className="space-y-3 text-muted-foreground">
-                      <li className="flex items-start">
-                        <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        Developed responsive UI/UX using HTML5, CSS3, and Bootstrap
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        Created wireframes and prototypes with Adobe XD, Figma, and Photoshop, enhancing
-                        design-to-development workflow
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Company 3: Freelance */}
+                <div className="relative pl-8 group">
+                  <div className="absolute left-[-9px] top-2 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg transition-transform duration-300 group-hover:scale-125"></div>
+                  <Card className="hover:shadow-xl transition-all duration-300 border-primary/20 bg-background/50 backdrop-blur">
+                    <CardContent className="p-6 sm:p-8">
+                      <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8 border-b border-border/50 pb-6">
+                        <div>
+                          <h3 className="text-2xl font-bold text-primary mb-3">Freelance Frontend Developer</h3>
+                          <div className="flex flex-wrap items-center gap-4 text-sm font-medium text-muted-foreground">
+                            <div className="flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full">
+                              <Calendar className="w-4 h-4" />
+                              Oct 2024 to Jun 2026
+                            </div>
+                            <div className="flex items-center gap-2 bg-secondary/20 text-muted-foreground px-3 py-1 rounded-full">
+                              <MapPin className="w-4 h-4 text-red-500" />
+                              Self
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-8">
+                        <div className="relative pl-4 border-l-2 border-primary/20 hover:border-primary transition-colors">
+                          <h4 className="text-lg font-bold text-foreground mb-2">Freelance Frontend Developer (1+ Year) :</h4>
+                          <p className="text-sm text-muted-foreground leading-relaxed ml-4">
+                            Delivered high-quality freelance web development services. Developed and maintained robust frontend applications for various clients, ensuring responsive designs, optimal performance, and seamless user experiences.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section ref={projectsRef} className="py-20 animate-section">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section ref={projectsRef} className="py-20 lg:py-24 animate-section">
+          <div className="w-full px-4 sm:px-8 lg:px-12">
             <div className="text-center mb-16">
-              <h2
-                className="text-3xl sm:text-4xl font-bold mb-6 text-orange-500"
-                style={{
-                  background: "linear-gradient(135deg, #f97316, #3b82f6)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                Featured Projects
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-foreground">
+                <span className="text-primary">Featured </span>Projects
               </h2>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
                 Showcasing my latest work in web development, from AI-powered applications to complex admin dashboards
@@ -588,245 +610,15 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Skills Section */}
-        <section ref={skillsRef} className="py-20 animate-section">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
+
+
+        {/* Contact Section */}
+        <section ref={contactRef} className="py-20 lg:py-24 animate-section">
+          <div className="w-full px-4 sm:px-8 lg:px-12">
+            <div className="w-full">
               <div className="text-center mb-16">
-                <h2
-                  className="text-3xl sm:text-4xl font-bold mb-6 text-orange-500"
-                  style={{
-                    background: "linear-gradient(135deg, #f97316, #3b82f6)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  Skills & Technologies
-                </h2>
-                <p className="text-lg sm:text-xl text-muted-foreground">
-                  The tools and technologies I use to bring ideas to life
-                </p>
-              </div>
-
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Frontend Skills */}
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Code className="w-6 h-6 text-primary mr-3" />
-                      <h3 className="text-xl font-bold">Languages</h3>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="secondary">HTML5</Badge>
-                        <Badge variant="secondary">CSS3</Badge>
-                        <Badge variant="secondary">JavaScript (ES6+)</Badge>
-                        <Badge variant="secondary">TypeScript</Badge>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Frameworks & Libraries */}
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Code className="w-6 h-6 text-secondary mr-3" />
-                      <h3 className="text-xl font-bold">Frameworks & Libraries</h3>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="secondary">React.js</Badge>
-                        <Badge variant="secondary">Redux</Badge>
-                        <Badge variant="secondary">Next.js</Badge>
-                        <Badge variant="secondary">Bootstrap</Badge>
-                        <Badge variant="secondary">Three.js</Badge>
-                        <Badge variant="secondary">GSAP</Badge>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Technologies */}
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Database className="w-6 h-6 text-accent mr-3" />
-                      <h3 className="text-xl font-bold">Technologies</h3>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="secondary">RESTful APIs</Badge>
-                        <Badge variant="secondary">GraphQL (Basic)</Badge>
-                        <Badge variant="secondary">WordPress</Badge>
-                        <Badge variant="secondary">RainbowKit</Badge>
-                        <Badge variant="secondary">Supabase</Badge>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Backend & Databases */}
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Database className="w-6 h-6 text-primary mr-3" />
-                      <h3 className="text-xl font-bold">Backend & Databases (Basic)</h3>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="secondary">Node.js</Badge>
-                        <Badge variant="secondary">Express.js</Badge>
-                        <Badge variant="secondary">WebSockets</Badge>
-                        <Badge variant="secondary">MongoDB</Badge>
-                        <Badge variant="secondary">MySQL</Badge>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Deployment & Tools */}
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Globe className="w-6 h-6 text-secondary mr-3" />
-                      <h3 className="text-xl font-bold">Deployment & Tools</h3>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="secondary">Git</Badge>
-                        <Badge variant="secondary">GitHub</Badge>
-                        <Badge variant="secondary">Postman</Badge>
-                        <Badge variant="secondary">Vercel</Badge>
-                        <Badge variant="secondary">Netlify</Badge>
-                        <Badge variant="secondary">FileZilla</Badge>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Design Tools */}
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Palette className="w-6 h-6 text-accent mr-3" />
-                      <h3 className="text-xl font-bold">Tools & Design</h3>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="secondary">Photoshop</Badge>
-                        <Badge variant="secondary">Illustrator</Badge>
-                        <Badge variant="secondary">Figma</Badge>
-                        <Badge variant="secondary">Adobe XD</Badge>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Core Frontend Skills */}
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Zap className="w-6 h-6 text-primary mr-3" />
-                      <h3 className="text-xl font-bold">Core Frontend</h3>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="secondary">Responsive Design</Badge>
-                        <Badge variant="secondary">UI/UX</Badge>
-                        <Badge variant="secondary">Animations</Badge>
-                        <Badge variant="secondary">State Management</Badge>
-                        <Badge variant="secondary">Debugging</Badge>
-                        <Badge variant="secondary">Testing</Badge>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Expertise */}
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Smartphone className="w-6 h-6 text-secondary mr-3" />
-                      <h3 className="text-xl font-bold">Expertise</h3>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="secondary">Web Designing</Badge>
-                        <Badge variant="secondary">Graphic Design</Badge>
-                        <Badge variant="secondary">Frontend Development</Badge>
-                        <Badge variant="secondary">Web3</Badge>
-                        <Badge variant="secondary">Next UI</Badge>
-                        <Badge variant="secondary">Figma-to-Code Convert</Badge>
-                        <Badge variant="secondary">Blockchain</Badge>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Education & Languages */}
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Globe className="w-6 h-6 text-accent mr-3" />
-                      <h3 className="text-xl font-bold">Education & Languages</h3>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="space-y-2">
-                        <p className="text-sm font-semibold">Education:</p>
-                        <div className="flex flex-wrap gap-2">
-                          <Badge variant="outline">10th Class HP Board (2018)</Badge>
-                          <Badge variant="outline">12th Class HP Board (2020)</Badge>
-                          <Badge variant="outline">Web Designing (2022)</Badge>
-                        </div>
-                      </div>
-                      <div className="space-y-2 pt-2">
-                        <p className="text-sm font-semibold">Languages:</p>
-                        <div className="flex flex-wrap gap-2">
-                          <Badge variant="outline">English</Badge>
-                          <Badge variant="outline">Hindi</Badge>
-                          <Badge variant="outline">Punjabi</Badge>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="mt-12">
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Zap className="w-6 h-6 text-primary mr-3" />
-                      <h3 className="text-xl font-bold">Hobbies</h3>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge variant="secondary">Listening to Music</Badge>
-                      <Badge variant="secondary">Playing Cricket</Badge>
-                      <Badge variant="secondary">Learning New Things</Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section ref={contactRef} className="py-20 animate-section">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  className="text-3xl sm:text-4xl font-bold mb-6 text-orange-500"
-                  style={{
-                    background: "linear-gradient(135deg, #f97316, #3b82f6)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  Get In Touch
+                <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-foreground">
+                  <span className="text-primary">Get In </span>Touch
                 </h2>
                 <p className="text-lg sm:text-xl text-muted-foreground">
                   Ready to bring your ideas to life? Let's create something amazing together.
@@ -867,37 +659,65 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                <Card className="hover:shadow-lg transition-shadow duration-300">
+                <Card className="hover:shadow-lg transition-shadow duration-300 border-primary/20">
                   <CardContent className="p-6 sm:p-8">
-                    <h3 className="text-2xl font-bold mb-6">Quick Contact</h3>
-                    <div className="space-y-4">
+                    <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+                    <form className="space-y-4" onSubmit={async (e) => {
+                      e.preventDefault();
+                      const form = e.target as HTMLFormElement;
+                      const data = new FormData(form);
+                      try {
+                        const res = await fetch("/api/send-email", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify(Object.fromEntries(data)),
+                        });
+                        if (res.ok) {
+                          alert("Message sent successfully ✅");
+                          form.reset();
+                        } else {
+                          alert("Failed to send ❌");
+                        }
+                      } catch (error) {
+                        alert("Error sending ❌");
+                      }
+                    }}>
+                      <div>
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Your Name"
+                          required
+                          className="w-full p-3 rounded-md border-2 border-border bg-background focus:outline-none focus:border-primary transition-colors shadow-sm"
+                        />
+                      </div>
+                      <div>
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="Your Email"
+                          required
+                          className="w-full p-3 rounded-md border-2 border-border bg-background focus:outline-none focus:border-primary transition-colors shadow-sm"
+                        />
+                      </div>
+                      <div>
+                        <textarea
+                          name="message"
+                          placeholder="Your Message"
+                          required
+                          rows={4}
+                          className="w-full p-3 rounded-md border-2 border-border bg-background focus:outline-none focus:border-primary transition-colors shadow-sm resize-none"
+                        ></textarea>
+                      </div>
                       <Button
+                        type="submit"
                         size="lg"
-                        className="w-full bg-orange-500 hover:bg-orange-600"
-                        onClick={() => setIsContactModalOpen(true)}
+                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                       >
                         <Mail className="w-5 h-5 mr-2" />
-                        Open Contact Form
+                        Send Message
                       </Button>
-                      <Button
-                        variant="outline"
-                        size="lg"
-                        className="w-full bg-transparent"
-                        onClick={() => window.open("https://wa.me/8278747969", "_blank")}
-                      >
-                        <Phone className="w-5 h-5 mr-2" />
-                        WhatsApp Chat
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="lg"
-                        className="w-full bg-transparent"
-                        onClick={() => window.open("https://www.linkedin.com/in/narinder-dhiman/", "_blank")}
-                      >
-                        <Linkedin className="w-5 h-5 mr-2" />
-                        LinkedIn Profile
-                      </Button>
-                    </div>
+                    </form>
                   </CardContent>
                 </Card>
               </div>
@@ -918,9 +738,9 @@ export default function Portfolio() {
                   className="rounded-lg"
                 />
                 <span
-                  className="text-lg font-bold text-orange-500"
+                  className="text-lg font-bold text-primary"
                   style={{
-                    background: "linear-gradient(135deg, #f97316, #3b82f6)",
+                    background: "linear-gradient(135deg, var(--primary), var(--secondary))",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -934,26 +754,26 @@ export default function Portfolio() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="hover:bg-primary/10 hover:text-primary"
+                  className="hover:bg-primary/10 hover:text-primary h-12 w-12"
                   onClick={() => window.open("https://github.com/Narinder-dhiman", "_blank")}
                 >
-                  <Github className="w-5 h-5" />
+                  <Github className="w-7 h-7" />
                 </Button>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="hover:bg-primary/10 hover:text-primary"
+                  className="hover:bg-primary/10 hover:text-primary h-12 w-12"
                   onClick={() => window.open("https://www.linkedin.com/in/narinder-dhiman/", "_blank")}
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Linkedin className="w-7 h-7" />
                 </Button>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="hover:bg-primary/10 hover:text-primary"
+                  className="hover:bg-primary/10 hover:text-primary h-12 w-12"
                   onClick={() => window.open("mailto:dhimannarinder746@gmail.com", "_blank")}
                 >
-                  <Mail className="w-5 h-5" />
+                  <Mail className="w-7 h-7" />
                 </Button>
               </div>
             </div>

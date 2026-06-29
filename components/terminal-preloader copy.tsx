@@ -13,7 +13,25 @@ export default function TerminalPreloader() {
     tl.fromTo(".line-left", { x: -200, opacity: 0 }, { x: 0, opacity: 1, duration: 1, ease: "power2.out" })
       .fromTo(".line-right", { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 1, ease: "power2.out" }, "-=0.5")
       .fromTo(".center-text", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, "-=0.3")
-     
+      .to(
+        ".progress-fill",
+        {
+          width: "100%",
+          duration: 3,
+          ease: "power2.inOut",
+          onUpdate: function () {
+            setProgress(Math.round(this.progress() * 100))
+          },
+        },
+        "-=0.5",
+      )
+      .to(".preloader-container", {
+        y: -window.innerHeight,
+        duration: 1,
+        ease: "power2.inOut",
+        delay: 0.5,
+        onComplete: () => setLoading(false),
+      })
 
     return () => {
       tl.kill()
@@ -24,8 +42,8 @@ export default function TerminalPreloader() {
 
   return (
     <div className="preloader-container fixed inset-0 z-[9999] bg-black flex items-center justify-center">
-      <div className="line-left absolute left-3 top-1/2 w-32 h-1 bg-gradient-to-r from-orange-500 to-transparent transform -translate-y-1/2"></div>
-      <div className="line-right absolute right-4 top-1/2 w-32 h-1 bg-gradient-to-l from-orange-500 to-transparent transform -translate-y-1/2"></div>
+      <div className="line-left absolute left-8 top-1/2 w-32 h-1 bg-gradient-to-r from-orange-500 to-transparent transform -translate-y-1/2"></div>
+      <div className="line-right absolute right-8 top-1/2 w-32 h-1 bg-gradient-to-l from-orange-500 to-transparent transform -translate-y-1/2"></div>
 
       <div className="center-text text-center space-y-8">
         <div className="space-y-4">
